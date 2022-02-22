@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>salario</title>
+</head>
+<body>
+    <h1>Calculadora de Salário Liquido</h1>
+    <label for="salarioBruto">Digite o Salário Bruto</label>
+    <input id="salarioBruto" type="number">
+    <button onclick="calculadoraSalario()">Calcular</button>
+</body>
+<script src="functions.js"></script>
+<script>
+
+    // DESCONTO_INSS = (SALÁRIO_BRUTO x ALÍQUOTA) - PARCELA_A_DEDUZIR
+    function INSS(salario) {
+        let descINSS = 0
+        if(salario <= 1045){
+            return descINSS = (salario * 0.075)
+        }else if(salario >= 1045.01 && salario<=2089.60) {
+            return descINSS = (salario * 0.09) + 15.67
+        }else if(salario >= 2089.61 && salario<=3134.40) {
+            return descINSS = (salario * 0.12) + 78.36
+        }else if(salario >= 3134.40 && salario<=6101.06) {
+            return descINSS = (salario * 0.14) + 141.05
+        }else {
+            return descINSS = 713.10
+        }
+    }
+    function IRPF(salario) {
+        // DESCONTO_IRPF = (SALÁRIO_SEM_INSS * ALÍQUOTA) - PARCELA_A_DEDUZIR
+        let descIRPF = 0
+        if(salario <= 1903.98){
+            return descIRPF = 0
+        }else if(salario >= 1903.99 && salario<=2826.65) {
+            return descIRPF = (salario * 0.075) + 142.8
+        }else if(salario >= 2826.66 && salario<= 3751.05) {
+            return descIRPF = (salario * 0.15) + 354.8
+        }else if(salario >= 3751.06 && salario<= 4664.68) {
+            return descIRPF = (salario * 0.0225) + 636.13
+        }else {
+            return descIRPF = (salario * 0.0275) + 869.36
+        }
+    }
+    function calculadoraSalario() {
+        let salario = getValue("salarioBruto")
+        let salarioSemINSS = salario - INSS(salario)
+        let salarioLiquido = (salario - INSS(salario) - IRPF(salarioSemINSS)).toFixed(2)
+        deleteAnswer()
+        document.body.appendChild(
+        addAnswer("p", `Seu Salário Liquido é de R$${salarioLiquido}`)
+      );
+        
+    }
+</script>
+</html>

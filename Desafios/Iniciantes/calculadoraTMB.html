@@ -1,0 +1,41 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Calculadora Taxa Metabólica Basal(TMB)</h1>
+    <label for="sexo">Sexo</label>
+    <select name="sexo" id="sexo">
+      <option value="Masculino">Masculino</option>
+      <option value="Feminino">Feminino</option>
+    </select>
+    <label for="peso">Peso</label>
+    <input type="number" id="peso" />
+    <label for="altura">Altura</label>
+    <input type="number" id="altura" />
+    <label for="idade">Idade</label>
+    <input type="number" id="idade" />
+    <button onclick="calcTMB()">Calcular TMB</button>
+  </body>
+  <script src="functions.js">
+     calcTMB = () => {
+      deleteAnswer();
+      let sexo = getValue("sexo");
+      let peso = getValue("peso");
+      let altura = getValue("altura");
+      let idade = getValue("idade");
+      let tmb = 0;
+      if (sexo === "Masculino") {
+        tmb = 66.5 + 13.75 * peso + 5.0 * altura - 6.8 * idade;
+      } else {
+        tmb = 665.1 + 9.56 * peso + (1.8 * altura - 4.7 * idade);
+      }
+      document.body.appendChild(
+        addAnswer("p", `Sua Taxa Metabólica Basal é ${tmb}`)
+      );
+    }
+  </script>
+</html>

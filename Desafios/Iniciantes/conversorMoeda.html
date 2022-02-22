@@ -1,0 +1,67 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversor moeda</title>
+  </head>
+  <body>
+    <h1>Conversor de Moeda</h1>
+    <label for="coinOrigin">Insira a Quantidade</label>
+    <input
+      class="changeClass"
+      id="coinOrigin"
+      type="number"
+      oninput="converseCoin()"
+    />
+    <select
+      class="changeClass"
+      name="origem"
+      id="coinOriginSelect"
+      onchange="converseCoin()"
+    >
+    </select>
+    <label for="coinDest">Valor Moeda Destino</label>
+    <input
+      class="changeClass"
+      id="coinDest"
+      type="number"
+      readonly
+    />
+    <select
+      class="changeClass select"
+      name="destino"
+      id="coinDestSelect"
+      onchange="converseCoin()"
+    >
+    </select>
+  </body>
+  <script src="coinsObject.js"></script>
+  <script src="functions.js"></script>
+  <script>
+    SetCoins = () => {
+      origem = document.getElementById("coinOriginSelect")
+      origem.innerHTML = ""
+      inputOrigem = document.getElementById("coinOrigin")
+      inputOrigem.value = 1
+      destino = document.getElementById("coinDestSelect")
+      destino.innerHTML = ""     
+      inputDestino = document.getElementById("coinDest")
+      inputDestino.value = coin.BRL.value
+     
+    Object.keys(coin).map(coins => {
+        coins === "USD" ? origem.innerHTML += `<option selected="selected">${coins}</option>` : origem.innerHTML  += `<option>${coins}</option>`
+        coins === "BRL" ? destino.innerHTML  += `<option selected="selected">${coins}</option>` : destino.innerHTML  += `<option>${coins}</option>`            
+      })   
+    }
+    window.onload = SetCoins
+
+    converseCoin = () => {
+      moedaOrigem = getValue("coinOriginSelect")
+      moedaDestino = getValue("coinDestSelect")
+      valorOrigem = getValue("coinOrigin")
+      resultadoDestino = document.getElementById("coinDest")
+      resultadoDestino.value = ((valorOrigem*coin[moedaDestino].value)/coin[moedaOrigem].value).toFixed(2)
+    }
+  </script>
+</html>
