@@ -1,0 +1,110 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const numeros = [2, 3, 6, 5, 10]
+    let novoArrayNumeros = []
+
+    for(let i = 0; i < numeros.length; i ++ ){
+        novoArrayNumeros.push(numeros[i] * 2)
+    }
+    console.log(numeros)
+    console.log(novoArrayNumeros)
+
+    const novoArrayMap = numeros.map(function(numero){
+        return numero * 2
+    })
+
+    console.log(novoArrayMap)
+
+    const novoArrayMapArrow = numeros.map(numero => numero * 2)
+
+    console.log(novoArrayMapArrow)
+
+    const nomes = ['Ayrton', 'Teshima', "Teste", "Fulano de Tal"]
+
+    const nomeMinusculos = nome.map(nome => nome.toLowerCase())
+    console.log(nomeMinusculos)
+
+    let mult2 = []
+    for(i =0; i <= numeros.length; i ++){
+        if(numeros[i] % 2 === 0 ) {
+            mult2.push(numeros[i])
+        }
+    }
+
+    console.log(mult2)
+
+    const numerosFiltrados = numeros.filter(numero = numero => {
+            return numero % 2 === 0
+    })
+
+    console.log(numerosFiltrados)
+
+    const arrayMapFilter = numeros
+        .filter(numero => numero % 2 === 0)
+        .map(numero => numero * 2)
+
+    console.log(arrayMapFilter)
+
+    let soma = 0
+    for(let i = 0; i < numeros.length; i ++ ){
+        soma = soma + numeros[i]
+    }
+
+    console.log(soma)
+
+    const somaReduce = numeros.reduce((valorAcumulador, valorArray) =>
+       valorAcumulador + valorArray, 0)
+
+    const pessoas = [
+        {
+            nome: 'Ayrton',
+            idade: 27
+        },
+        {
+            nome: "João",
+            idade: 14
+        },
+        {
+            nome: "Maria",
+            idade: 23
+        },
+        {
+            nome: 'Joana',
+            idade: 21
+        },
+        {
+            nome: "Lucas",
+            idade: 32
+        },
+        {
+            nome: "Mateus",
+            idade: 15
+        },
+        {
+            nome: "Isa",
+            idade: 23
+        },
+        {
+            nome: "Luiza",
+            idade: 17
+        }
+    ]
+
+    pessoasAgrupadas = pessoas.reduce(function(valorAcumulador, valorArray){
+        const propMaiorOuMenor = valorArray.idade >= 18 ? 'maiores' : 'menores';
+        valorAcumulador[propMaiorOuMenor].push(valorArray)
+        return valorAcumulador
+    }, {maiores:[], menores:[]})
+
+    console.log(pessoasAgrupadas)
+</script>
+</html>

@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const _state = {
+        titulo: "Loja de Produtos",
+        data: [
+            {
+                id: '001',
+                nome: 'Canon XX',
+                preco: 13000
+            },
+            {
+                id: "002",
+                nome: 'Nikon XX',
+                preco: 12200
+            }
+        ]
+    }
+
+    function html(props){
+        return `
+        <div>
+            <h1>${props.titulo}</h1>
+            <ul>
+                ${props.data.map(function(item){
+                    return (` 
+                        <li>${item.nome} - ${item.preco}</li>
+                    `).join('')
+                })}
+            </ul>
+        </div>        
+        `
+    }
+
+    function renderiza(__state){
+        document.body.innerHTML = html(__state)
+    }
+
+    const state = new Proxy(_state , {
+        set: function(target, propKey, value) {
+            target[propKey] = value
+            renderiza(target)
+        }
+    })
+
+    renderiza()
+</script>
+</html>

@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var nome = 'Ayrton'
+    console.log(nome)
+
+    function imprimirNome(){
+        console.log(nome)
+    }
+
+    imprimirNome()
+
+    console.log(window.imprimirNome)
+
+    function imprimeIdade() {
+        var idade = 27
+        console.log(idade)
+    }
+
+    imprimeIdade()
+    // console.log(idade)
+
+    function imprimePais(){
+        pais = 'Brasil'
+        console.log(pais)
+    }
+
+    imprimePais()
+    console.log(pais)
+    console.log(window.pais)
+    console.log(this.pais)
+
+    function imprimiThis(){
+        console.log('imprimiThis', this)
+    }
+
+    function imprimeMensagem(){
+        imprimiThis.call({msg: 'Sou um Objeto'})
+    }
+
+    function imprimeMensagem2(){
+        imprimiThis.call(['Sou um Array'])
+    }
+
+    imprimeMensagem()
+    imprimeMensagem2()
+    imprimiThis()
+
+    function usuario(){
+        var nome='Ayrton'
+        console.log(nome)
+        return function() {
+            var sobrenome = "Teshima"
+            conso.log(nome, sobrenome)
+        }
+    }
+
+    var user = usuario()
+    user()
+
+    if(true) {
+        var youtube = '@programadorabordo'
+        let autor = 'Ayrton'
+        console.log(youtube)
+    }
+
+    console.log(youtube)
+    // console.log(autor)
+
+    let sobrenome = "Teshima"
+    console.log(sobrenome)
+
+    // let sobrenome = 'Jesus'
+    sobrenome = "Jesus"
+    console.log(sobrenome)
+
+    {
+        let sobrenome = "Ateu"
+        console.log(sobrenome)
+        
+    }
+
+
+</script>
+</html>

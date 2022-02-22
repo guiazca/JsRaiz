@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    console.log(this)
+
+    function usuario(){
+        this.nome = "Ayston"
+        this.idade = 27
+        this.soma = function(a, b){
+            return a + b
+        }
+    }
+    usuario()
+    var usuario = new usuario()
+    console.log(usuario)
+
+    console.log(usuario.nome)
+    console.log(usuario.idade)
+    console.log(usuario.soma(10,4))
+
+    function Personagem(p1, p2, p3){
+        console.log(p1, p2, p3)
+        console.log(this)
+    }
+
+    var personagemThis = {
+        nome: "Teshima"
+    }
+
+    Porsonagem.call(personagemThis, 'param1', 123, [5])
+
+    var PersonagemParams = ['param$$$$$', 321, [1,2,3]]
+    Personagem.apply(personagemThis, PersonagemParams )
+
+    var personagemBind = Personagem.bind(personagemThis, "Olá")
+    personagemBind("Mundo", '!!!!')
+
+    var soma = (a, b) => {
+        return a + b
+    }
+
+    console.log(soma(10,10))
+
+    var soma = (a, b) => a + b
+
+    console.log(soma(10,11))
+
+    var retornaUsuario = cidade => ({ nome: 'Ayrton', idade: 27, cidade })
+
+    console.log(retornaUsuario("Rio de Janeiro"))
+
+    var imprimiThis = () => {
+        console.log(this)
+    }
+
+    imprimiThis()
+    imprimiThis.call( {nome: 'Ayrton'})
+</script>
+</html>

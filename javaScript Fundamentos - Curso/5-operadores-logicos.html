@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var a = true
+    var b = false
+
+    console.log('!a',!a) //negando 
+    console.log('!a',!b)
+
+    console.log('!!a',!!a)
+    console.log('!!b',!!b)
+
+    //null, undefined, '', false, 0
+    //
+    console.log('!!null',!!null)
+    console.log('!!undefined', !!undefined)
+    console.log('!!""',!!'')
+    console.log('!!0', !!0)
+
+    console.log("!'texto'",!'texto')
+    console.log("!!'texto'",!!'texto')
+    console.log("!!20", !!20)
+
+    console.log(10 && 'texto' && 'Programador') //retorna o ultimo
+    console.log(null && 'Programador a Bordo') //retorna o primeiro valor falso
+    console.log('Passa' && 0 && 'Dev') //return 0
+    console.log('Passou' && null) //return null
+    console.log('Passou' && null) //return null
+    console.log('false' && 100 & '' && 'teste' && null) // return ''
+    console.log(10 > 5 && 7 < 10)
+    console.log(10 > 5 && 10 > 11)
+
+    console.log(null || 'Programador a Bordo') //return ultimo valor verdadeiro
+    console.log(null || 'Programador a bordo' || 26)
+    console.log(null || '' || 26)
+    console.log('Programador a Bordo' || 'teste')
+    
+    console.log(10 > 5 || 10 < 11)
+    console.log(10 > 5 || 10 > 11)
+    console.log(10 < 5 || 10 > 11)
+    console.log(null || false || 0) //return last false value
+
+    console.log("Programador" && 2050 || '' && 26)
+    console.log("Programador" && 2050 && 'a Bordo' || 0)
+    console.log(null || !'' && 'Programador')
+</script>
+</html>

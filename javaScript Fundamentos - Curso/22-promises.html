@@ -1,0 +1,148 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /* 
+        SINGLE THREAD
+        IO não bloqueante
+
+        IO ASSINCRONA
+        Ex: BANCO DE DADOS PEGAR O CEP
+        CEP -> CORREIOS
+
+        PROMISES
+    */
+
+   console.log('Primeiro')
+
+   setTimeout(function(){
+       console.log("Segundo")
+   }, 0)
+
+   console.log('Terceiro')
+   console.log('Quarto')
+   setTimeout(function(){
+       console.log("Meio")
+   }, 0)
+   console.log("Quinto")
+
+   /*
+        PENDENTE
+        REALIZADA
+        REJEITADA
+        ESTEBELECIDO
+   */
+
+   function jaRealizada(){
+       return Promise.resolve("22793100")
+   }
+
+   function jaRejeitada(){
+       return Promise.reject('FUI REJEITADO')
+   }
+
+   jaRealizada().then(function(data){
+       console.log("Promise Resolvida", data)
+   })
+
+//    jaRejeitada.catch(function(){
+//     console.log("REJEITADO")
+//    })
+
+   function promiseTrabalhada(){
+       return new Promise(function(resolve, reject){
+           setTimeout(function() {
+                resolve("Olá Programador")
+           }, 1000)
+           
+       })
+   }
+
+  
+
+   promiseTrabalhada().then(function(mensage) {
+       console.log(mensage)
+   })
+
+   function pegaCEP(cep) {
+            return window
+                .fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        }
+    function extraiEndereco(data){
+        return data.json()
+    }
+
+    function imprimeEndereco(endereco){
+        console.log(endereco)
+    }
+
+    function trataErro(){
+            console.log("Aconteceu Algum Erro!!")
+        }
+
+    // https://viacep.com.br/ws/22793100/json/
+
+    jaRealizada()
+        .then(pegaCEP)
+        .then(extraiEndereco)
+        .then(imprimeEndereco)
+        .catch(trataErro)
+        .finally(function(){
+            console.log("Sempre Executada")
+        })
+
+
+    function demora500ms(){
+       return new Promise(function(resolve, reject){
+           setTimeout(function() {
+                resolve("demora500ms")
+           }, 500)
+           
+       })
+   }
+
+   function demora200ms(){
+       return new Promise(function(resolve, reject){
+           setTimeout(function() {
+                resolve("demora200ms")
+           }, 200)
+           
+       })
+   }
+
+
+   Promise.all([ 
+        demora500ms(),
+        jaRealizada(),
+        demora200ms()
+        ]).then(function(promisesResolvidas){
+            console.log(promisesResolvidas)
+    })
+
+    Promise.race([ 
+        demora500ms(),
+        jaRealizada(),
+        demora200ms()
+        ]).then(function(promisesResolvidas){
+            console.log(promisesResolvidas)
+    }, function(valorRejeitado){
+        console.log(valorRejeitado)
+    })
+
+
+    Promise.all([ 
+        jaRealizada(), 
+        pegaCEP("22793100")
+        ]).then(function(promisesResolvidas){
+            console.log(promisesResolvidas)
+    })
+
+</script>
+</html>

@@ -1,0 +1,145 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var usuario = {
+        nome: 'Ayrton',
+        idade: 26,
+        youtube: 'Programador a Bordo',
+        'ultimo-nome': 'Teshima',
+        competencias:{
+        linguaguens = ['JavaScript', 'Phyton', 'Go', 'Scala', 'PHP'],
+        instrumentosMusicais = ['Guitarra', 'Baixo', 'Bateria']
+    }
+    }
+
+    console.log(usuario)
+    console.log(usuario.idade)
+    console.log(usuario.nome)
+    console.log(usuario.youtube)
+    console.log(usuario['ultimo-nome'])
+    
+    console.log(usuario['youtube'])
+
+    usuario.ano = 2019
+
+    console.log(usuario)
+    console.log(usuario.ano)
+
+    delete usuario.idade
+
+    console.log(usuario)
+
+    usuario.hobbies = ['Musica', 'Programa', 'Viajar']
+
+    console.log(usuario)
+    console.log(usuario.hobbies)
+
+    var usuario2 = {
+        digaOi(nome){
+            return `Olá ${nome}`
+        }
+    }
+
+  console.log(usuario2)
+  console.log(usuario2.digaOi("Ayrton"))
+  console.log(usuario2.digaOi('Teshima'))
+
+  var cor = 'azul'
+  var idade = 26
+  var nome = 'Ayrton'
+  var usuario3 = {
+      nome,
+      cor,
+      idade
+  }
+
+  console.log(usuario3)
+
+  var usuario4 = {
+      nome: "Ayrton",
+      idade: 26
+  }
+
+  var extraInfo = {
+      pais = "Brasil",
+      estado = "Rio de Janeiro"
+  }
+
+  var novoUsuario = Object.assign({}, usuario4, extraInfo)
+  console.log(novoUsuario)
+
+//   Object.assign(usuario4, extraInfo)
+//   console.log('usuario4', usuario4)
+
+var novoUsuario2 = {
+    ...usuario4,
+    ...extraInfo,
+    sexo: 'M',
+    profissao: 'Programador'
+}
+
+console.log(novoUsuario2)
+
+var nomeVariavel = 'Estado'
+var nome = 'lastName'
+var usuario5 = {
+    [nome]: 'Ayrton',
+    [nomeVariavel]: "Rio de Janeiro"
+}
+
+//getters and setters
+
+var usuarios = [
+    {
+        nome: "Ayrton",
+        idade: 26
+    },
+    {
+        nome: "Joao",
+        idade: 19
+    },
+    {
+        nome: "Maria",
+        idade: 21
+    }
+]
+
+console.log(usuarios[1].nome)
+
+var usuario = {
+    posicao: 0,
+    get atual(){
+        return usuarios[this.posicao]
+    },
+    set atual(posicao) {
+        this.posicao = posicao
+    },
+    proximo(){
+        ++this.posicao
+    },
+    anterior(){
+        --this.posicao
+    }
+}
+
+console.log(usuario.atual)
+usuario.proximo()
+console.log(usuario.atual)
+usuario.proximo()
+console.log(usuario.atual)
+usuario.anterior()
+console.log(usuario.atual)
+usuario.atual = 0
+console.log(usuario.atual)
+usuario.atual = 2
+console.log(usuario.atual)
+</script>
+</html>

@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    console.log(a)
+    var a = 123 // var a -> declaracao a = 123 -> atribuição, 
+
+    var b
+    console.log(b)
+    b = 123
+    console.log(b)
+
+    // console.log(ddd)
+    // let ddd = 123
+
+    // console.log(ccc)
+    // let ccc = 123
+
+    // console.log(soma(10, 5))
+    // var soma = function(a, b) {
+    //     return a + b
+    // }
+
+    console.log(soma(10,5))
+    function soma(a, b){
+        return a + b
+    }
+
+    function testaHoisting(){
+        console.log("testaHoisting", aaa)
+        var aaa = 123;
+        console.log(aaa)
+    }
+
+    testaHoisting()
+
+    function calcula(){
+        return geraResultado()
+
+        /*
+            Muita logica de codigo
+        */
+
+        function soma( a, b){
+            return a + b
+        }
+
+        function geraResultado(){
+            return soma(10,5) / 3
+        }
+    }
+
+    console.log(calcula())
+
+
+</script>
+</html>

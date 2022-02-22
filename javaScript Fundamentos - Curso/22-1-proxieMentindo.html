@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const usuario = {
+        nome: 'Ayrton',
+        email: 'programadorabordo@gmail.com'
+    }
+
+    const usuarioProxy = new Proxy(usuario, {
+        get: function(target, propKey) {
+           return propKey !== 'idade' ? target[propKey].toUpperCase() : target[propKey]
+        },
+        set: function(target, propKey, value) {
+             target[propKey] = value
+        }
+    })
+</script>
+</html>
